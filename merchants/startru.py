@@ -15,6 +15,9 @@ class StartRu:
         if not client and proxy:
             self.client = httpx.Client(http2=True, proxies=proxy, timeout=60,
                                        transport=httpx.HTTPTransport(retries=5, verify=False))
+        else:
+            self.client = httpx.Client(http2=True, timeout=60,
+                                       transport=httpx.HTTPTransport(retries=5, verify=False))
         self.account = RandomAccount()
         self.api_host: str = "https://api.start.ru"
         self.payment_host: str = "https://payment.start.ru"
